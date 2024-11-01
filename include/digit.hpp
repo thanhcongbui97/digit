@@ -42,6 +42,14 @@ private:
     const char *lang;
 
 public:
+    digit_lang() {
+        this->negative  = {"negative"};
+        this->ones      = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",  "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+        this->tens      = { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+        this->lions     = { "", "hundred", "thousand", "million", "billion"};
+        this->lang      = {"English"};
+    }
+
     digit_lang(const char *_neg, std::vector<const char*> _ones, std::vector<const char*> _tens, std::vector<const char*> _lions, const char *_lang) {
         this->negative  = _neg;
         this->ones      = _ones;

@@ -2,13 +2,7 @@
 
 
 int main() {
-    digit_lang digit_en (
-        {"negative"},
-        { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",  "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" },
-        { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" },
-        { "", "hundred", "thousand", "million", "billion"},
-        "English"
-    );
+    digit_lang digit_en;
 
     digit_lang digit_vn (
         {"am"},
