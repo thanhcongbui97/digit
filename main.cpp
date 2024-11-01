@@ -4,13 +4,7 @@
 int main() {
     digit_lang digit_en;
 
-    digit_lang digit_vn (
-        {"am"},
-        { "", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin",  "muoi", "muoi mot", "muoi hai", "muoi ba", "muoi bon", "muoi lam", "muoi sau", "muoi bay", "muoi tam", "muoi chin" },
-        { "", "muoi", "hai muoi", "ba muoi", "bon muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi" },
-        { "", "tram", "nghin", "trieu", "ty"},
-        "Vietnamese"
-    );
+    digit_vn digit_vn;
 
     digit_lang digit_german (
         {"negativ"},

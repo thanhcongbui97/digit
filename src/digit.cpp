@@ -7,7 +7,7 @@ const char *err_msg [] = {
     "UNKNOW ERROR",
 };
 
-void print_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION]) {
+void digit_lang::print_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION]) {
     int j, k;
     for (j = 0; j < MAX_LLION; j++) {
         for(k = 0; k < MAX_LLION; k++) {
@@ -128,7 +128,7 @@ int digit_lang::spell_hundred(const char *s, char *digit_letter[], int len) {
 
 int digit_lang::spell_billion(const char *s, char *letters[], int len) {
     char *digit_letter[MAX_LLION][MAX_LLION] = {0};
-    int i = 0, letter = 0, offset = 0, hundred_llion = 3;
+    int i = 0, letter = 0, offset = 0;
 
     while (i + hundred_llion < len) {
         offset = 0;
@@ -162,7 +162,8 @@ int digit_lang::spell_number(const char *s) {
 
     char *digit_letter[MAX_LLION][MAX_LLION] = {0};
 
-    int i = 0, letter = 0, offset = 0, billion_llion = 9;
+    /* To spell each number, start with spelling each group of billion */
+    int i = 0, letter = 0, offset = 0;
 
     while (i + billion_llion < (int)strlen(s)) {
         offset = 0;
@@ -173,6 +174,7 @@ int digit_lang::spell_number(const char *s) {
         offset += spell_llion(i - billion_llion, digit_letter[i/billion_llion] + offset);
     }
 
+    /* Spelling the last billion */
     offset = 0;
     letter = spell_billion(s, digit_letter[i/billion_llion + 1] + offset, strlen(s) - i);
     offset += letter;

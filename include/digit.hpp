@@ -28,12 +28,10 @@ enum err_no {
     total_err_no
 };
 
-void print_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION]);
-
 int set_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION], char *letters[MAX_LLION]);
 
 class digit_lang {
-private:
+protected:
     const char *negative;
     std::vector<const char *> ones;
     std::vector<const char *> tens;
@@ -58,14 +56,26 @@ public:
         this->lang     = _lang;
     }
 
-    int spell_number(const char *s);
-private:
-    int spell_llion(int i, char *digit_letter[]);
-    int spell_ones(const char *s, char *digit_letter[]);
-    int spell_tens(const char *s, char *digit_letter[], int len);
-    int spell_hundred(const char *s, char *digit_letter[], int len);
-    int spell_billion(const char *s, char *letters[], int len);
+    virtual int spell_number(const char *s);
+    virtual void print_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION]);
+protected:
+    virtual int spell_llion(int i, char *digit_letter[]);
+    virtual int spell_ones(const char *s, char *digit_letter[]);
+    virtual int spell_tens(const char *s, char *digit_letter[], int len);
+    virtual int spell_hundred(const char *s, char *digit_letter[], int len);
+    virtual int spell_billion(const char *s, char *letters[], int len);
     int validate_check(const char *s);
+};
+
+class digit_vn : public digit_lang {
+public:
+    digit_vn() {
+        this->negative  = {"am"};
+        this->ones      = { "", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin",  "muoi", "muoi mot", "muoi hai", "muoi ba", "muoi bon", "muoi lam", "muoi sau", "muoi bay", "muoi tam", "muoi chin" };
+        this->tens      = { "", "muoi", "hai muoi", "ba muoi", "bon muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi" };
+        this->lions     = { "", "tram", "nghin", "trieu", "ty"};
+        this->lang      = {"Vietnamese"};
+    }
 };
 
 #endif /*DIGIT_HPP*/
