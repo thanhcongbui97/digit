@@ -1,5 +1,12 @@
 #include "digit.hpp"
 
+const char *err_msg [] = {
+    "OK",
+    "INVALID INPUT",
+    "INPUT IS TOO LONG",
+    "UNKNOW ERROR",
+};
+
 void print_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION]) {
     int j, k;
     for (j = 0; j < MAX_LLION; j++) {
@@ -29,6 +36,25 @@ int set_digit_letter(char *digit_letter[MAX_LLION][MAX_LLION], char *letters[MAX
     }
 
     return i;
+}
+
+int digit_lang::validate_check(const char *s) {
+    if (strlen(s) > MAX_INPUT_LENGTH) {
+        return too_long_input;
+    }
+    
+    if ((s[0] != '-') && (s[0] < '0' || s[0] > '9')) {
+        return invalid_input;
+    }
+
+    uint32_t i;
+    for (i = 1; i < strlen(s); i++) {
+        if (s[i] < '0' || s[i] > '9') {
+            return invalid_input;
+        }
+    }
+
+    return ok;
 }
 
 int digit_lang::spell_llion(int i, char *digit_letter[]) {
@@ -125,6 +151,13 @@ int digit_lang::spell_billion(const char *s, char *letters[], int len) {
 }
 
 int digit_lang::spell_number(const char *s) {
+
+    int err = validate_check(s);
+    if (err != ok) {
+        printf("%s ERROR [%s] : %s\n", __func__, err_msg[err], s);
+        return err;
+    }
+
     char *digit_letter[MAX_LLION][MAX_LLION] = {0};
 
     int i = 0, letter = 0, offset = 0, billion_llion = 9;
