@@ -154,11 +154,11 @@ int digit_lang::spell_number(const char *s) {
 
     int err = validate_check(s);
     if (err != ok) {
-        printf("%s ERROR [%s] : %s\n", __func__, err_msg[err], s);
+        // printf("%s ERROR [%s] : %s\n", __func__, err_msg[err], s);
         return err;
     }
 
-    printf("%s %s by %s: ", __func__, s, this->lang);
+    // printf("%s \"%s\" by %s: ", __func__, s, this->lang);
 
     char *digit_letter[MAX_LLION][MAX_LLION] = {0};
 
