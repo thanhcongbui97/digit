@@ -158,6 +158,8 @@ int digit_lang::spell_number(const char *s) {
         return err;
     }
 
+    printf("%s %s by %s: ", __func__, s, this->lang);
+
     char *digit_letter[MAX_LLION][MAX_LLION] = {0};
 
     int i = 0, letter = 0, offset = 0, billion_llion = 9;

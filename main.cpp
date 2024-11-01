@@ -6,14 +6,16 @@ int main() {
         {"negative"},
         { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",  "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" },
         { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" },
-        { "", "hundred", "thousand", "million", "billion"}
+        { "", "hundred", "thousand", "million", "billion"},
+        "English"
     );
 
     digit_lang digit_vn (
         {"am"},
         { "", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin",  "muoi", "muoi mot", "muoi hai", "muoi ba", "muoi bon", "muoi lam", "muoi sau", "muoi bay", "muoi tam", "muoi chin" },
         { "", "muoi", "hai muoi", "ba muoi", "bon muoi", "nam muoi", "sau muoi", "bay muoi", "tam muoi", "chin muoi" },
-        { "", "tram", "nghin", "trieu", "ty"}
+        { "", "tram", "nghin", "trieu", "ty"},
+        "Vietnamese"
     );
 
     digit_en.spell_number("123456");

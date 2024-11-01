@@ -1,3 +1,11 @@
+/**
+ * Author:    Cong, Bui Thanh
+ * Created:   11.01.2024
+ * 
+ * This program was written first in C to test the performance
+ **/
+
+
 #ifndef DIGIT_HPP
 #define DIGIT_HPP
 
@@ -12,7 +20,6 @@
 #define MAX_TEN 10
 #define MAX_LLION 128
 #define MAX_INPUT_LENGTH 1024
-#define MAX_OUTPUT 128
 
 enum err_no {
     ok = 0,
@@ -32,13 +39,15 @@ private:
     std::vector<const char *> tens;
     std::vector<const char *> lions;
     uint8_t hundred_llion = 3, billion_llion = 9;
+    const char *lang;
 
 public:
-    digit_lang(const char *_neg, std::vector<const char*> _ones, std::vector<const char*> _tens, std::vector<const char*> _lions) {
+    digit_lang(const char *_neg, std::vector<const char*> _ones, std::vector<const char*> _tens, std::vector<const char*> _lions, const char *_lang) {
         this->negative  = _neg;
         this->ones      = _ones;
         this->tens      = _tens;
         this->lions     = _lions;
+        this->lang     = _lang;
     }
 
     int spell_number(const char *s);
