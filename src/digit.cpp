@@ -63,7 +63,7 @@ int digit_lang::spell_tens(const char *s, char *digit_letter[], int len) {
 }
 
 int digit_lang::spell_hundred(const char *s, char *digit_letter[], int len) {
-    int i = 0, j = 0, lead = 0, negative = 0;
+    int i = 0, j = 0, lead = 0;
 
     for (i = 0; i < len; i++) {
         if (s[i] != '0') {
@@ -129,7 +129,7 @@ int digit_lang::spell_number(const char *s) {
 
     int i = 0, letter = 0, offset = 0, billion_llion = 9;
 
-    while (i + billion_llion < strlen(s)) {
+    while (i + billion_llion < (int)strlen(s)) {
         offset = 0;
         i += billion_llion;
         letter = spell_billion(s + strlen(s) - i, digit_letter[i/billion_llion], billion_llion);
