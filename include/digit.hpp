@@ -65,6 +65,7 @@ protected:
     virtual int spell_hundred(const char *s, char *digit_letter[], int len);
     virtual int spell_billion(const char *s, char *letters[], int len);
     int validate_check(const char *s);
+    int standardize(char **s, char *letter[]);
 };
 
 class digit_vn : public digit_lang {

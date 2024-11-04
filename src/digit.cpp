@@ -57,6 +57,26 @@ int digit_lang::validate_check(const char *s) {
     return ok;
 }
 
+int digit_lang::standardize(char **s, char *letter[]) {
+    int i = 0;
+    if (*s[i] == '-') {
+        letter[i++] = (char *)this->negative;
+    }
+
+    /* Trim the first n element of '0' */
+    while (*(*s + i) == '0') {
+        i++;
+    }
+
+    if (*(*s + i) == 0) {
+        letter[0] = (char *)this->ones[0];
+    }
+
+    *s += i;
+
+    return i;
+}
+
 int digit_lang::spell_llion(int i, char *digit_letter[]) {
     if (i < 3) {
         return 0;
@@ -150,9 +170,9 @@ int digit_lang::spell_billion(const char *s, char *letters[], int len) {
     return set_digit_letter(digit_letter, letters);
 }
 
-int digit_lang::spell_number(const char *s) {
+int digit_lang::spell_number(const char *n) {
 
-    int err = validate_check(s);
+    int err = validate_check(n);
     if (err != ok) {
         // printf("%s ERROR [%s] : %s\n", __func__, err_msg[err], s);
         return err;
@@ -164,6 +184,9 @@ int digit_lang::spell_number(const char *s) {
 
     /* To spell each number, start with spelling each group of billion */
     int i = 0, letter = 0, offset = 0;
+    char *s = (char*)n;
+
+    standardize(&s, digit_letter[MAX_LLION - 1]);
 
     while (i + billion_llion < (int)strlen(s)) {
         offset = 0;

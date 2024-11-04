@@ -17,7 +17,13 @@ int main() {
     digit_en.spell_number("123456");
     digit_en.spell_number("abcd");
     digit_vn.spell_number("231-4355");
+    digit_vn.spell_number("10000000000000000000000000000001");
     digit_vn.spell_number("-12345678912345678945130000000");
     digit_german.spell_number("52");
+    digit_vn.spell_number("52");
+    digit_vn.spell_number("0000000052");
+    digit_vn.spell_number("0000000052");
+    digit_vn.spell_number("-000000000000000052");
+    digit_vn.spell_number("-00");
     return 0;
 }
